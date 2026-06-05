@@ -1,3 +1,4 @@
+import './styles.css'
 import { project } from "./project.js";
 
 let defaultProject = new project('default');
