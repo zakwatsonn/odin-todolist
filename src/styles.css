@@ -19,11 +19,25 @@ header {
 }
 
 .title {
-    margin: 0 1rem;
+    margin: 0 0 0 1rem;
     color: #517664;
 }
 
-.createButton {
+.menuContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.menu {
+    display: none;
+}
+
+.menu.open {
+    display: flex;
+    gap: 1rem;
+}
+
+.createButton, .new {
     line-height: normal;
     border: 0;
     font-size: 20pt;
@@ -33,7 +47,12 @@ header {
     border-radius: 6rem;
 }
 
-.createButton:hover {
+button.new {
+    font-size: 12pt;
+    border-radius: 1rem;
+}
+
+.createButton:hover, .new:hover{
     color: #517664;
     background-color: white;
     -webkit-transition: background-color 300ms linear, color 300ms linear;
