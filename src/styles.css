@@ -59,3 +59,42 @@ button.new {
     -ms-transition: background-color 300ms linear, color 300ms linear;
     transition: background-color 300ms linear, color 300ms linear;
 }
+
+.todoFormContainer {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.todoForm {
+    display: flex;
+    background-color:#9FD8CB;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    padding:1rem;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 4px 2px 0.5rem #344d40;
+}
+
+.todoForm>p {
+    font-size: 20pt;
+    color: #517664;
+    font-weight: bold;
+}
+
+.todoForm>label, .todoForm>p {
+    margin: 0.25rem;
+    text-align: center;
+}
+
+.submitButton {
+    margin: 1rem 0.25rem 0 0.25rem;
+    width: 30%;
+    padding: 0.5rem 0.25rem;
+    background-color: #517664;
+    color:white;
+    border: 0;
+    border-radius: 0.5rem;
+}
