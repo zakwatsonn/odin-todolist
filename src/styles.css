@@ -5,6 +5,7 @@
 body {
     margin: 0;
     background-color:  #517664;
+    position:relative;
 }
 
 header {
@@ -61,8 +62,14 @@ button.new {
 }
 
 .todoFormContainer {
-    margin: 1rem;
-    padding: 1rem;
+    display: none;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.todoFormContainer.open {
+    display: block;
 }
 
 .todoForm {
@@ -74,7 +81,7 @@ button.new {
     padding:1rem;
     border-radius: 1.5rem;
     width: 100%;
-    max-width: 300px;
+    max-width: 500px;
     box-shadow: 4px 2px 0.5rem #344d40;
 }
 
@@ -89,7 +96,15 @@ button.new {
     text-align: center;
 }
 
-.submitButton {
+.todoForm>input {
+    background-color: #517664;
+    color: white;
+    border-radius: 0.5rem;
+    border:0;
+    width: 100%;
+}
+
+input.submitButton {
     margin: 1rem 0.25rem 0 0.25rem;
     width: 30%;
     padding: 0.5rem 0.25rem;
