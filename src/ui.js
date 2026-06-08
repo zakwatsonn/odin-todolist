@@ -9,3 +9,6 @@ function openCloseMenu() {
     createMenu.classList.toggle('open')
 }
 createButton.addEventListener('click', openCloseMenu);
+
+//new todo button logic
+let todoButton = document.querySelector('.newTodo')
