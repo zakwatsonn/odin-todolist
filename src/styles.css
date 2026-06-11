@@ -61,18 +61,18 @@ button.new {
     transition: background-color 300ms linear, color 300ms linear;
 }
 
-.todoFormContainer {
+.todoFormContainer, .projectFormContainer {
     display: none;
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0);
 }
 
-.todoFormContainer.open {
+.todoFormContainer.open, .projectFormContainer.open {
     display: block;
 }
 
-.todoForm {
+.todoForm, .projectForm {
     display: flex;
     background-color:#9FD8CB;
     align-items: center;
@@ -85,18 +85,18 @@ button.new {
     box-shadow: 4px 2px 0.5rem #344d40;
 }
 
-.todoForm>p {
+.todoForm>p, .projectForm>p {
     font-size: 20pt;
     color: #517664;
     font-weight: bold;
 }
 
-.todoForm>label, .todoForm>p {
+.todoForm>label, .todoForm>p, .projectForm>label, .projectForm>p {
     margin: 0.25rem;
     text-align: center;
 }
 
-.todoForm>input {
+.todoForm>input, .projectForm>input {
     background-color: #517664;
     color: white;
     border-radius: 0.5rem;
