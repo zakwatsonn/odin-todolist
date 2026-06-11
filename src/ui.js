@@ -1,10 +1,20 @@
 import './styles.css'
 import { project } from './project.js';
 
+//initialise default project
+let projectList = [];
+let defaultProject = new project('default');
+projectList.push(defaultProject);
+
+defaultProject.createTodo('todo one', 'this is a test todo', 'due tomorrow', 'low priority');
+console.log(JSON.parse(JSON.stringify(defaultProject)));
+defaultProject.deleteTodo(defaultProject.todoList[0].id);
+console.log(defaultProject);
+
 //create button logic
 let createButton = document.querySelector(".createButton");
 let createMenu = document.querySelector(".menu");
-let todoFormSubmit = document.querySelector(".submitButton");
+let todoFormSub = document.querySelector(".todoForm");
 let todoForm = document.querySelector(".todoFormContainer")
 let todoButton = document.querySelector('.newTodo')
 let projectForm = document.querySelector('.projectFormContainer')
@@ -41,3 +51,14 @@ function openCloseProjectForm() {
     projectForm.classList.toggle('open')
 }
 projectButton.addEventListener('click', openCloseProjectForm)
+
+//todo form submit logic
+todoFormSub.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let formData = new FormData(todoFormSub)
+
+    //change this, currently only selects default project
+    defaultProject.createTodo(formData.get('title'), formData.get('description'), formData.get('due'), formData.get('priority'));
+    console.log(defaultProject);
+    openCloseTodoForm();
+})
