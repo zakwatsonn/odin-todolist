@@ -10,10 +10,14 @@ let todoButton = document.querySelector('.newTodo')
 let projectForm = document.querySelector('.projectFormContainer')
 let projectButton = document.querySelector('.newProject')
 
+function isOpen(menu) {
+   return menu.classList.contains('open')
+}
+
 function openCloseMenu() {
-    if (projectForm.classList.contains('open')) {
+    if (isOpen(projectForm)) {
         projectForm.classList.remove('open');
-    } else if (todoForm.classList.contains('open')) {
+    } else if (isOpen(todoForm)) {
         todoForm.classList.remove('open');
     }
     createMenu.classList.toggle('open')
@@ -22,7 +26,7 @@ createButton.addEventListener('click', openCloseMenu);
 
 //new todo button logic
 function openCloseTodoForm() {
-    if (projectForm.classList.contains('open')) {
+    if (isOpen(projectForm)) {
         projectForm.classList.remove('open');
     }
     todoForm.classList.toggle('open')
@@ -31,7 +35,7 @@ todoButton.addEventListener('click', openCloseTodoForm)
 
 //new project button logic
 function openCloseProjectForm() {
-    if (todoForm.classList.contains('open')) {
+    if (isOpen(todoForm)) {
         todoForm.classList.remove('open');
     }
     projectForm.classList.toggle('open')
