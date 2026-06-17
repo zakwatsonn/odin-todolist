@@ -4,6 +4,7 @@ import { project } from './project.js';
 //initialise default project
 let projectList = [];
 let defaultProject = new project('default');
+defaultProject.createTodo('dildo', 'dildoDesc', 'NOWMOFO', 'high')
 projectList.push(defaultProject);
 
 defaultProject.createTodo('todo one', 'this is a test todo', 'due tomorrow', 'low priority');
@@ -19,6 +20,7 @@ let todoForm = document.querySelector(".todoFormContainer")
 let todoButton = document.querySelector('.newTodo')
 let projectForm = document.querySelector('.projectFormContainer')
 let projectButton = document.querySelector('.newProject')
+let todoContainer = document.querySelector('.todoContainer')
 
 function isOpen(menu) {
    return menu.classList.contains('open')
@@ -62,3 +64,26 @@ todoFormSub.addEventListener('submit', (e) => {
     console.log(defaultProject);
     openCloseTodoForm();
 })
+
+//display todos of all projects
+projectList.forEach((project) => {
+    project.todoList.forEach((todo) => {
+        let todoCard = document.createElement('div')
+        todoCard.classList.add('todoCard')
+        let todoCardButton = document.createElement('button')
+        todoCardButton.classList.add('complete')
+        todoCardButton.textContent = 'Done'
+        let cardTitle = document.createElement('p')
+        cardTitle.classList.add('cardTitle')
+        cardTitle.textContent = todo.title
+        let cardDesc = document.createElement('p')
+        cardDesc.classList.add('cardDesc')
+        cardDesc.textContent = todo.desc
+
+        todoCard.appendChild(todoCardButton)
+        todoCard.appendChild(cardTitle)
+        todoCard.appendChild(cardDesc)
+        todoContainer.appendChild(todoCard)
+    })
+})
+

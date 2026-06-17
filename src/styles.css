@@ -113,3 +113,21 @@ input.submitButton {
     border: 0;
     border-radius: 0.5rem;
 }
+
+.todoContainer {
+    margin:1rem;
+}
+
+.todoCard {
+    padding: 0 0.5rem 0 0.5rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #9FD8CB;
+    border-radius: 1rem;
+}
+
+.todoCard > * {
+    margin: 0.5rem;
+}
