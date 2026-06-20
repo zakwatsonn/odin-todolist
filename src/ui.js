@@ -62,28 +62,32 @@ todoFormSub.addEventListener('submit', (e) => {
     //change this, currently only selects default project
     defaultProject.createTodo(formData.get('title'), formData.get('description'), formData.get('due'), formData.get('priority'));
     console.log(defaultProject);
+    displayTodos();
     openCloseTodoForm();
 })
 
-//display todos of all projects
-projectList.forEach((project) => {
-    project.todoList.forEach((todo) => {
-        let todoCard = document.createElement('div')
-        todoCard.classList.add('todoCard')
-        let todoCardButton = document.createElement('button')
-        todoCardButton.classList.add('complete')
-        todoCardButton.textContent = 'Done'
-        let cardTitle = document.createElement('p')
-        cardTitle.classList.add('cardTitle')
-        cardTitle.textContent = todo.title
-        let cardDesc = document.createElement('p')
-        cardDesc.classList.add('cardDesc')
-        cardDesc.textContent = todo.desc
+function displayTodos() {
+    while (todoContainer.firstChild) {
+        todoContainer.removeChild(todoContainer.firstChild);
+    }
+    projectList.forEach((project) => {
+        project.todoList.forEach((todo) => {
+            let todoCard = document.createElement('div')
+            todoCard.classList.add('todoCard')
+            let todoCardButton = document.createElement('button')
+            todoCardButton.classList.add('complete')
+            todoCardButton.textContent = 'Done'
+            let cardTitle = document.createElement('p')
+            cardTitle.classList.add('cardTitle')
+            cardTitle.textContent = todo.title
+            let cardDesc = document.createElement('p')
+            cardDesc.classList.add('cardDesc')
+            cardDesc.textContent = todo.desc
 
-        todoCard.appendChild(todoCardButton)
-        todoCard.appendChild(cardTitle)
-        todoCard.appendChild(cardDesc)
-        todoContainer.appendChild(todoCard)
+            todoCard.appendChild(todoCardButton)
+            todoCard.appendChild(cardTitle)
+            todoCard.appendChild(cardDesc)
+            todoContainer.appendChild(todoCard)
+        })
     })
-})
-
+}
