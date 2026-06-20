@@ -3,7 +3,7 @@ import { project } from './project.js';
 
 //initialise default project
 let projectList = [];
-let defaultProject = new project('default');
+let defaultProject = new project('Default');
 defaultProject.createTodo('dildo', 'dildoDesc', 'NOWMOFO', 'high')
 projectList.push(defaultProject);
 
@@ -17,10 +17,12 @@ let createButton = document.querySelector(".createButton");
 let createMenu = document.querySelector(".menu");
 let todoFormSub = document.querySelector(".todoForm");
 let todoForm = document.querySelector(".todoFormContainer")
+let projectChoice = document.querySelector('.pChoice')
 let todoButton = document.querySelector('.newTodo')
 let projectForm = document.querySelector('.projectFormContainer')
 let projectButton = document.querySelector('.newProject')
 let todoContainer = document.querySelector('.todoContainer')
+let projectFormSub = document.querySelector('.projectForm')
 
 function isOpen(menu) {
    return menu.classList.contains('open')
@@ -36,13 +38,28 @@ function openCloseMenu() {
 }
 createButton.addEventListener('click', openCloseMenu);
 
+//todoForm project append
+function projectAppend() {
+    while (projectChoice.firstChild) {
+        projectChoice.removeChild(projectChoice.firstChild)
+    }
+    projectList.forEach((element) => {
+        let option = document.createElement('option')
+        option.value = element.projectName;
+        option.textContent = element.projectName;
+        projectChoice.appendChild(option);
+    })
+}
+
 //new todo button logic
 function openCloseTodoForm() {
     if (isOpen(projectForm)) {
         projectForm.classList.remove('open');
     }
+    projectAppend();
     todoForm.classList.toggle('open')
 }
+
 todoButton.addEventListener('click', openCloseTodoForm)
 
 //new project button logic
@@ -66,7 +83,17 @@ todoFormSub.addEventListener('submit', (e) => {
     openCloseTodoForm();
 })
 
-function displayTodos() {
+//projectform submit logic
+projectFormSub.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let pFormData = new FormData(projectFormSub)
+
+    projectList.push(new project(pFormData.get('title')))
+    console.log(projectList)
+    openCloseProjectForm()
+})
+
+export function displayTodos() {
     while (todoContainer.firstChild) {
         todoContainer.removeChild(todoContainer.firstChild);
     }
