@@ -75,10 +75,12 @@ projectButton.addEventListener('click', openCloseProjectForm)
 todoFormSub.addEventListener('submit', (e) => {
     e.preventDefault();
     let formData = new FormData(todoFormSub)
+    let selectedProjectName = formData.get('project')
+    let selectedProject = projectList.find((proj) => proj.projectName === selectedProjectName);
 
     //change this, currently only selects default project
-    defaultProject.createTodo(formData.get('title'), formData.get('description'), formData.get('due'), formData.get('priority'));
-    console.log(defaultProject);
+    selectedProject.createTodo(formData.get('title'), formData.get('description'), formData.get('due'), formData.get('priority'));
+    console.log(projectList);
     displayTodos();
     openCloseTodoForm();
 })
@@ -110,10 +112,14 @@ export function displayTodos() {
             let cardDesc = document.createElement('p')
             cardDesc.classList.add('cardDesc')
             cardDesc.textContent = todo.desc
+            let cardProject = document.createElement('p')
+            cardProject.classList.add('cardProj')
+            cardProject.textContent = project.projectName
 
             todoCard.appendChild(todoCardButton)
             todoCard.appendChild(cardTitle)
             todoCard.appendChild(cardDesc)
+            todoCard.appendChild(cardProject)
             todoContainer.appendChild(todoCard)
         })
     })

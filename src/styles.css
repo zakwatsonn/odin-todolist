@@ -131,3 +131,7 @@ input.submitButton {
 .todoCard > * {
     margin: 0.5rem;
 }
+
+.cardProj {
+    margin-left: auto;
+}
